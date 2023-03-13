@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+ <form action="/finish" method="post">
+    <fieldset>
+        <legend> Basic Details :</legend>
+        <table>
+            
+            
+        <tr>
+            <td>
+                <label for="fname">First name:</label>
+            </td>
+            <td>
+
+                
+                <input type="text" id="fname" name="fname">
+            </td>
+            <td>
+                <label for="lname">Last name:</label>
+            </td>
+            <td>
+                <input type="text" id="lname" name="lname">  
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="designaion">Designation:</label>
+            </td>
+            <td>
+                <input type="text" id="designaion" name="designaion">
+            </td>
+            <td>
+                <label for="address1">Address1 :</label>
+            </td>
+            <td>
+                <input type="text" id="address1" name="address1"> 
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="email">Email id:</label>
+            </td>
+            <td>
+                <input type="text" id="email" name="email"><br><br>  
+            </td>
+            <td>
+                <label for='address2'>Address2 :</label>
+            </td>
+            <td>
+                <input type="text" id="address2" name="address2"><br><br> 
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="phone number">Phone Number :</label>
+            </td>
+            <td>
+                <input type="text" id="phone number" name="phone number">
+            </td>
+            <td>
+                <label for="city">City :</label>
+            </td>
+            <td>
+                <input type="text" id="city" name="city"><br><br>  
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="state">State:</label><br>
+                <select name="state" id="state">
+
+                    <% for(var i=0;i<state.length; i++) { %>
+                       
+                        <option value="<%= state[i].s %>"><%= state[i].s %></option>
+                          
+                   <%}%>
+                    <!-- <option value="gujarat">Gujarat</option>
+                    <option value="bihar">Bihar</option>
+                    <option value="mumbai">Mumbai</option>
+                    <option value="pune">Pune</option>
+                    <option value="goa">Goa</option> -->
+                </select>
+            </td>
+            <td>
+                <label for="zip code">Zip code: </label>
+                <input type="text" id="zip code" name="zip code">
+        
+            </td>
+            
+        </tr>
+        <tr>
+            <td>
+                <label for="gender">Gender :</label>
+                <tr>
+
+                    <% for(var i=0;i<gender.length; i++) { %>
+                       
+
+                        <td>
+                           
+                         <input type="radio" id="<%= gender[i].g %>" name=gender>
+                         <label for="<%= gender[i].g %>"><%= gender[i].g %></label>
+         
+         
+                        </td>
+         
+                        
+                         <%}%>
+                        
+
+                </tr><br>
+
+               
+            <td>
+               
+                <td> 
+                <label for="relationShip Status">RelationShip Status:</label>
+                
+                <select name="relationShip Status" id="relationShip Status">
+                   
+                    <% for(var i=0;i<data.length; i++) { %>
+                       
+                         <option value="<%= data[i].r %>"><%= data[i].r %></option>
+                           
+                    <%}%>
+                   
+                    <!-- <option value="marreid">Married</option>
+                    <option value="other">Other</option> -->
+                </select>
+            </td>
+            </td><br><br>
+            <td>
+                <label for="dob">Date Of Birth:</label>
+                <input type="date" id="dob" name="dob">  
+            </td>
+        </tr>
+</table>     
+</fieldset>
+<fieldset>
+                  
+    <legend> Education Details :</legend>
+<table name="education"  id="education" >
+    <tr>
+        <input type="button" value="+" onclick="education()">
+        
+    </tr>
+    <tr>
+        <td>
+         
+     
+                 <label for="ssc"> result:</label><br>
+        </td>
+    </tr>
+    <tr>   
+        <td>
+
+            <label for="board">Name of Board:</label>
+            <input type="text" id="board" name="board">
+
+        </td>
+        <td>         
+                 <label for="passingyear">Passing year</label>
+                 <input type="text" id="passingyear" name="passing ear"><br>
+        </td>
+        <td>
+            <label for="percentage">Percentage</label>
+            <input type="text" id="percentage" name="percentage"><br>
+        </td>
+    </tr>
+
+</table>
+
+</fieldset>
+<fieldset>
+          
+    <legend> Work Experience:</legend>
+<table id="work" name="work">
+    <tr>
+        <!-- <input type="button" value="+" onclick="work()"> -->
+        <input type="button" value="+" onclick="work()">
+    </tr>
+    <tr>
+        <td>
+           
+        
+                    <label for="companyName">CompanyName :</label>
+                    <input type="text" id="companyName" name="companyName">
+                    <label for="designaion">Designation:</label>
+                    <input type="text" id="designaion" name="designaion">
+        
+                    <label for="dob1">From:</label>
+                    <input type="date" id="dob1" name="dob1">
+                    <label for="dob2">To:</label>
+                    <input type="date" id="dob2" name="dob2">
+        </td>
+        
+
+    </tr>
+</table>
+ 
+     
+</fieldset>
+
+<fieldset>
+    <legend> Language Known:</legend>
+<table>
+  
+    <tr>
+       
+            <% for(var i=0;i<language.length; i++) { %>
+                       
+                
+                 <tr>
+                   
+                    <input type="checkbox" value="<%= language[i].l %>"id="<%= language[i].l %>" name="<%= language[i].l %>">
+                    <label for="<%= language[i].l %>"><%= language[i].l %> </label>
+
+                    <input type="checkbox" id="read" name="read">
+                    <label for="read">Read </label>
+
+                    <input type="checkbox" id="write" name="write">
+                    <label for="write">Write </label>
+                    
+                    <input type="checkbox" id="speak" name="speak">
+                    <label for="speak">Speak </label>
+
+                 </tr> <br><br>
+                
+           <%}%>
+           
+        
+       
+    </tr>
+    
+</table>
+</fieldset>
+<fieldset>
+    <legend> Technologies Know:</legend>
+    <table>
+        <tr>
+            <% for(var i=0;i<technologies.length; i++) { %>
+                       
+                
+                <tr>
+                  
+                   <input type="checkbox" value="<%= technologies[i].t %>"id="<%= technologies[i].t %>" name="<%= technologies[i].t %>">
+                   <label for="<%= technologies[i].t %>"><%= technologies[i].t %> </label>
+
+                   <input type="radio" id="beginner" name="<%= technologies[i].t %>" >
+                <label for="beginner">Beginner</label>
+
+                <input type="radio" id="mediator" name="<%= technologies[i].t %>" >
+                <label for="mediator">Mediator</label> 
+
+                <input type="radio" id="expert" name="<%= technologies[i].t %>" >
+                <label for="expert">Expert</label>
+
+                </tr><br><br>
+
+                <%}%>
+
+           
+
+        </tr>
+    </table>
+
+</fieldset>
+
+<fieldset>
+<legend> Refrence Contact :</legend>
+<table id="refrence" name="refrence">
+  <tr>
+      <input type="button" value="+" onclick="addthevalue()">
+
+  </tr>
+  <tr>
+      <td>
+        <label for="namer">Name :</label>
+        <input type="text" id="namer" name="namer">
+      </td>
+      <td>
+        <label for="contactnumber">Contact Number :</label>
+        <input type="text" id="contactnumber" name="contactnumber">
+      </td>
+        <td>
+        <label for="relation">Relation :</label>
+        <input type="text" id="relation" name="relation">
+ 
+      </td>
+      
+  </tr>
+</table>
+</fieldset>
+<fieldset>
+<legend> Prefrence :</legend>
+
+<table>
+    <tr>
+        <td>
+            <label for="prefered locaton">Prefered Locaton:</label>
+            <select name="prefered locaton" id=""prefered locaton" multiple>
+                <option value="location1">location1</option>
+                <option value="location2">location2</option>
+                <option value="location3">location3</option>
+            </select><br><br>  
+        </td>
+        <td>
+            <tr>
+                <label for="notice period">Notice Period:</label>
+                <input type="text" id="notice period" name="notice period">
+            </tr>
+            
+        
+        <tr>
+            <label for="Current CTC">Current CTC :</label>
+            <input type="text" id="current ctc" name="current ctc">
+        </tr>
+        <tr>
+            <label for="expected ctc">Expected CTC:</label>
+            <input type="text" id="expected ctc" name="expected ctc"><br><br>
+        </tr>
+        </td>
+       
+            
+            
+            <!-- <option value="development">Development</option>
+            <option value="design">Design</option>
+            <option value="marketing">Marketing</option> -->
+       
+      
+    
+
+        
+    </tr>
+    <td>
+     
+        <label for="department">Department:</label>
+        
+        <select name="department" id="department">
+        
+            <% for(var i=0;i<department.length; i++) { %>
+                        
+                <option value="<%= department[i].d %>"><%= department[i].d %></option>
+                    
+            <%}%>
+        </select>
+    
+    </td>
+   
+
+</table>
+</fieldset>
+ </form>
+<script>
+        
+    var  companyName=0;
+    var  Designation=0;
+    var  dob1=0;
+    var  dob2=0;
+    var  namer=0;
+    var contactnumber=0;
+    var relation=0;
+    var  percentage=0;
+    var  board=0;
+    var  passingyear=0;
+
+      function addthevalue()
+      {
+         document.getElementById("refrence").innerHTML+=`<tr>
+        <td>
+          <label for="namer">Name :</label>
+          <input type="text" id=${namer++} name="namer">
+        </td>
+        <td>
+          <label for="contactnumber">Contact Number :</label>
+          <input type="text" id=${contactnumber++} name="contactnumber">
+        </td>
+          <td>
+          <label for="relation">Relation :</label>
+          <input type="text" id="relation" name="relation">
+   
+        </td>
+       </tr>`;
+      }
+      function work()
+        {
+            document.getElementById("work").innerHTML+=`<tr>
+        <td>
+           
+        
+                    <label for="companyName">CompanyName :</label>
+                    <input type="text" id=${companyName} name="companyName">
+                    <label for="designaion">Designation:</label>
+                    <input type="text" id=${designaion} name="designaion">
+        
+                    <label for="dob1">From:</label>
+                    <input type="date" id=${dob1} name="dob1">
+                    <label for="dob2">To:</label>
+                    <input type="date" id=${dob2} name="dob2">
+        </td>
+        
+
+    </tr>`;
+        }
+      function education()
+      {
+          document.getElementById("education").innerHTML+=`<tr>
+          <td>
+           
+       
+                   <label for="ssc"> result:</label><br>
+          </td>
+      </tr>
+      <tr>   
+          <td>
+
+              <label for="board">Name of Board:</label>
+              <input type="text" id=${board++} name="board">
+
+          </td>
+          <td>         
+                   <label for="passingyear">Passing year</label>
+                   <input type="text" id=${passingyear++} name="passingyear"><br>
+          </td>
+          <td>
+              <label for="percentage">Percentage</label>
+              <input type="text" id=${percentage++} name="percentage"><br>
+          </td>
+      </tr>
+  `;
+      }
+  function server()
+  {
+      console.log("submittd !!!")
+  }
+  
+
+  </script>
+</body>
+</html>

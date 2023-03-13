@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+        <div>
+            <input type="text" placeholder="Search.." id="input" onchange="query(this.value)">
+        
+             <div id ="button"><a id="btn" href="" >search</a></div>
+        </div>
+<body>
+    <script>
+        function query(str){
+           
+          var p=document.getElementById('input').value;
+           p=p.replace ('^','&first=');
+           console.log(p)
+           p=p.replace ('#','&last=');
+           p=p.replace ('%','&email=');
+           p=p.replace ('-','&coll=');
+           p=p.replace ('~','&number=');
+           
+           document.getElementById('btn').setAttribute("href",`/page?${p}`)
+           console.log(p)
+        }
+        
+    </script>
+    
+</body>
+   
+    <table>
+        
+        <tr style="color:black;font-size: 150%;text-align: center;">
+            
+            <td>first</td>
+            <td>last</td>
+            <td>email</td>
+            <td>coll</td>
+            <td>number</td>
+        </tr>
+        <tr>
+            <td>^</td>
+            <td>#</td>
+            <td>%</td>
+            <td>-</td>
+            <td>~</td>
+        </tr>
+    </table>
+
+ 
+    <table border="1">
+        <tr style="color:black;font-size: 250%;text-align: center;">
+           <td> <a href = "/page?no=1"></a> id </td>
+           <td> <a href = "/page?no=1"></a> first</td>
+           <td> <a href = "/page?no=1"></a> last</td>
+           <td> <a href = "/page?no=1"></a> email</td>
+           <td> <a href = "/page?no=1"></a> coll</td>
+           <td> <a href = "/page?no=1"></a> number</td>
+            
+           
+        </tr>
+        
+         
+            <% for(var i=0;i<data.length; i++) { %>
+                <tr>
+                    <td><%=data[i].id %></td>
+                    <td><%=data[i].first %></td>
+                    <td><%=data[i].last %></td>
+                    <td><%=data[i].email %></td>
+                    <td><%=data[i].coll %></td>
+                    <td><%=data[i].number%></td>
+                </tr>
+  
+           <% } %>
+            
+        
+       
+    </table>
+    
+    <% for(var i=1;i<=jk;i++){%>
+
+        <% if (i==(no)){ %>
+            <div class='pqr'><a href="/page?no=<%=i%>"><%=i%></a></div>
+    
+        <%} else {%>
+            
+            <div class='pqr1'><a href="/page?no=<%=i%>"><%=i%></a></div>
+        <%}%>
+        
+        <%}%>
+    
+       
+    <style>
+       .pqr{
+            background-color: #A7727D;
+            color: black;
+            
+            padding: 8px 8px;
+            text-decoration: none;  
+                    
+            display: inline-block;       
+       }
+       .pqr1{
+           
+           background-color: #EDDBC7;
+            color: white;
+            border-radius: 5px;
+            display: inline-block;
+       }
+        
+
+        td {
+              margin: 0 10%;
+              padding: 2px;
+              border: 1px solid   #FFD39A;
+              background-color: #EEEEEE;
+              text-align: center;
+
+            }
+        
+        </style>
+</body> 
+
+</html>

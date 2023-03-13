@@ -1,0 +1,7 @@
+p_id,preferedlocaton,noticeperiod,currentctc,expectedctc,department,t_id
+1,location3,6,90,99,marketing,1
+2,location2,6,7,8,design,2
+3,location3,8,88,998,marketing,3
+4,location3,4,45,45,design,4
+5,location1,3,55,55,design,5
+6,location2,5,16,26,marketing,7

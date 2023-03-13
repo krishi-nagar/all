@@ -1,0 +1,8 @@
+id,first,last,designation,address1,address2,phone,city,state,zipcode,gender,relation,dob
+1,jinu,nagar,"developer,teacher",gita,dayamay,23456,surat,gujrat,67867,female,single,2015-07-03
+2,kinjal,nagar,"SE,developer",80FEET,gita,2345678,goa,gujrat,456,female,single,2023-01-31
+3,rita,roy,"nurse,hr",bag,park,78567354,bombay,gujrat,7989,female,other,2023-03-09
+4,adi,patel,"hod,develop",patan,"vadilal chowk",8765,,gujrat,987654,male,single,2023-02-28
+5,akshay,panchal,"HR,QA",ghosha,thaltej,123456,patan,gujrat,123456,male,other,2023-02-13
+6,himanshu,roy,"mech,software",madhumati,gangaur,54678,baroda,bihar,354678,male,married,2023-02-20
+7,himanshu,roy,"mech,software",madhumati,gangaur,54678,baroda,bihar,354678,male,married,2023-02-20

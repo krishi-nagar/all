@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- //eneter the value of matrix<input type="number" id="no"> -->
+    <!-- <input type="button" onclick="generateTable()" value="onclick">
+     -->
+
+
+
+
+ <!-- to kinjal_kinjal_show the kinjal_timer function -->
+<p id ="no"></p>
+<h1>
+    <font color="#FF2626">K</font>
+    <font color="#252A34">U</font>
+    <font color="#753422">K</font>
+    <font color="#FFD523">U</font>
+</h1>
+<h2>
+    <font color="#0F52BA">K</font>
+    <font color="#66CC66">U</font>
+    <font color="#FF9966">B</font>
+    <font color="#FFCCCC">E</font>
+    
+</h2>
+    
+</head>
+<body>
+    <!--static table creating 3*3-->
+
+    <table id="tb" border="1 width=50%" style=background-color:lightgray>
+        <tr>
+            <td id=0 onclick= "generateTable()" ></td>
+            <td id=1 onclick= "generateTable()" ></td>
+            <td id=2  onclick= "generateTable()" ></td>
+            <td id=3 onclick= "generateTable()" ></td>
+        </tr>
+        <tr>
+            <td  id=4 onclick= "generateTable()" ></td>
+            <td id=5 onclick= "generateTable()" ></td>
+            <td  id=6 onclick= "generateTable()" ></td>
+            <td  id=7 onclick= "generateTable()" ></td>
+            
+        </tr>
+        <tr>
+            <td id=8 onclick= "generateTable()" ></td>
+            <td  id=9 onclick= "generateTable()" ></td>
+            <td  id=10 onclick= "generateTable()" ></td>
+            <td  id=11 onclick= "generateTable()" ></td>
+            
+        </tr>
+        <tr>
+            <td  id=12 onclick= "generateTable()" ></td>
+            <td id=13 onclick= "generateTable()" ></td>
+            <td  id=14 onclick= "generateTable()" ></td>
+            <td  id=15 onclick= "generateTable()" ></td>
+            
+        </tr>
+        
+    </table> 
+        <script>
+        
+        // the kinjal_count variable to increase the value of row and coloumn
+         var kinjal_count=5;
+
+         // the kinjal_random variable for color RGB values store
+         var kinjal_random;
+
+         // function for table generate dynamically 
+            function generateTable()
+
+            {
+
+                // variable or r ,g ,b and generate the kinjal_random value of 0 to 255 in the color picker by math kinjal_random function
+                var kinjal_r = parseInt(Math.random()*(255));
+                var kinjal_g = parseInt(Math.random()*(255));
+                var kinjal_b = parseInt(Math.random()*(255));
+                
+                // storing the rgb value in one variable
+                var kinjal_randomcolor = `rgb(${kinjal_r},${kinjal_g},${kinjal_b})`;
+
+                //to get table id 
+                var kinjal_tt=document.getElementById("tb");
+
+                // to give the id to the new cells of dynamic table
+                var kinjal_wa=1;
+
+                //to print the string variable
+                var kinjal_s="";
+
+                
+                //console.log("hello");
+
+                for (i=0;i<kinjal_count;i++)
+                {  
+                    kinjal_s+="<tr>"
+                    for(j=0;j<kinjal_count;j++)
+                    {
+                    
+                        kinjal_s+=`<td  id=${kinjal_wa++} style="background-color:${kinjal_randomcolor}"> </td>`;
+                    //console.log("hEY");
+                    //here we increment the (wa) value to give each cell a diffrent id in increment order
+                    
+                    }
+                
+
+                    kinjal_s+="</tr>"
+                
+                }
+
+                // to print the values of table
+                kinjal_tt.innerHTML=kinjal_s;
+                
+                // kinjal_random funtion to bind all the table cells so we multiply kinjal_count in a matrix way
+                kinjal_random = parseInt(Math.random()*((kinjal_count)*(kinjal_count)));
+
+                //console.log(kinjal_random);
+
+                // here we use if loop because kinjal_random=0 gives an error of null indefined
+                if(kinjal_random==0)
+                {
+                    kinjal_random=1;
+                }
+                
+                // here we bind the kinjal_random value of color to the perticular cell to display with diifrent color
+                var kinjal_newcell = document.getElementById(kinjal_random);
+                
+                // here we use the opacity to lighter the color from other cells by 0.5 in the kinjal_random value
+                kinjal_newcell.style.backgroundColor=`rgb(${kinjal_r},${kinjal_g},${kinjal_b},0.5)`;
+                
+                // here we bind event to the perticular cell and call the function
+                kinjal_newcell.addEventListener("click",generateTable);
+                
+                // here we pass the if loop for stop the increament of the cells at 9*9 matrix
+                if(kinjal_count<9)
+                {
+                    kinjal_count++;
+                }
+                
+                //kinjal_tt.style.backgroundColor=kinjal_kinjal_randomcolor;
+                //(dont style background color by table id name it will color all the cells )
+                //kinjal_tt.style.backgroundColor="blue";
+
+                
+            }
+        
+         // to set kinjal_timer we do the next steps
+         // we write it in paragraph and pass its id here
+
+         var kinjal_second =60;
+         
+
+
+         var kinjal_show=setInterval(kinjal_time,1000);
+
+         function kinjal_time()
+         {
+             if(kinjal_second>0)
+             {
+               document.getElementById("no").innerText=kinjal_second;
+              
+               //decrement of the kinjal_second
+               kinjal_second=kinjal_second-1;
+             }
+             else
+             {
+                // to clear or stop the interval
+                clearInterval(kinjal_show);
+             }
+         }
+        </script> 
+
+        <style>
+            table
+            {
+                height: 500px;
+                width: 500px;
+                top:2;
+                bottom:2s;
+                left:2;
+                right:4;
+            }
+            td
+            {
+                height:auto;
+                width: auto;
+                text-align: center;
+                font-size: 90px;
+                margin: auto;
+                border-radius: 10%;
+            }
+            p
+            {
+                height: 25px;
+                width: 25px;
+                font-size:medium;
+                text-align: center;
+                background-color: #bbb;
+                border-radius: 70%;
+                display: inline-block;
+
+            }
+            
+        </style>
+</body>
+</html> 
+
+<!--algorithm
+1. create static table
+2. create dynamic table or appent the value or cell
+3. bind event on new cells and give and id to it
+4. to make a perticular color cell create or use kinjal_random variable and we convert it to the int
+5. then we bind event only on perticula cell and color that cell value by kinjal_random variable
+6.style the background color by table id
+7. make three variable of rgb and then use kinjal_random function to generate randon color of value
+8. then color the td of the table and then do the opacity value to the perticular cell to reflect diffrent color then other cells
+9. timer for kinjal_timer we use set interval attribute
+10. name=setinterval(functionname,kinjal_seconds);
+11.then give if else with the condition
+12. in if the decrement condition of kinjal_time
+13. in else stop the set interval conditon
+-->

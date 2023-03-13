@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="/update" method="post">
+
+    <fieldset>
+            <legend> Basic Details :</legend>
+            <table>
+                <input type="hidden" id="id" name="id" value="<%=basic[0].id%>">  
+            <tr>
+                <td>
+                    <label for="fname">First name:</label>
+                </td>
+                <td>
+    
+                    
+                    <input type="text" id="fname" value="<%=basic[0].firt%>" name="fname">
+                </td>
+                <td>
+                    <label for="lname">Last name:</label>
+                </td>
+                <td>
+                    <input type="text" id="lname" name="lname" value="<%=basic[0].lat%>" >  
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="designaion">Designation:</label>
+                </td>
+                <td>
+                    <input type="text" id="designaion" name="designaion" value="<%=basic[0].designation%>">  
+                </td>
+                <td>
+                    <label for="address1">Address1 :</label>
+                </td>
+                <td>
+                    <input type="text" id="address1" name="address1" value="<%=basic[0].address1%>" > 
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="email">Email id:</label>
+                </td>
+                <td>
+                    <input type="text" id="email" name="email" value="<%=basic[0].email%>" ><br><br>  
+                </td>
+                <td>
+                    <label for='address2'>Address2 :</label>
+                </td>
+                <td>
+                    <input type="text" id="address2" name="address2" value="<%=basic[0].address2%>" ><br><br> 
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="phonenumber">Phone Number :</label>
+                </td>
+                <td>
+                    <input type="text" id="phonenumber" name="phonenumber" value="<%=basic[0].phone%>" >
+                </td>
+               
+            </tr>
+            <tr>
+                <td>
+                    <label for="state">State:</label><br>    
+                    <label  id="state" name="state"><%-state%></label>
+                    
+
+                    <label for="city">City</label>
+                    <label  id="city" name="city" value="<%=city%>"><%-city%> </label>
+                    
+                    <!-- <select name="city" id="city"></select> -->
+
+                    
+                </td>
+                <td>
+                    <label for="zipcode">Zip code: </label>
+                    <input type="text" id="zipcode" name="zipcode" value="<%=basic[0].zipcode%>">
+            
+                </td>
+
+                
+            </tr>
+
+            <tr>
+             
+                <td>
+                    <label for="gender">Gender :</label>
+                    <tr>
+    
+                            <td>
+                           
+                             <label name="gender"for="gender" value="<%=gender%>"><%-gender%></label>
+             
+                            </td>
+             
+                    </tr><br>
+                </td>
+                <td>
+                   
+                    <td> 
+                    <label for="relationshipstatus">RelationShip Status:</label>
+                    
+                     <label value="<%=basic[0].relation %>"><%-relationship %></label>
+                   
+                </td>
+                </td><br><br>
+                <td>
+                    <label for="dob">Date Of Birth:</label>
+                    <input type="date" id="dob" name="dob" value="<%=basic[0].dob%>">  
+                </td>
+            </tr>
+    </table>     
+    </fieldset>
+
+    <fieldset>
+                      
+        <legend> Education Details :</legend>
+    <table name="education"  id="education" >
+        <tr>
+            <input type="button" value="+" onclick="education()">
+            
+        </tr>
+        <tr>
+            <td>
+             
+         
+                     <label for="ssc"> result:</label><br>
+            </td>
+        </tr>
+        <tr>   
+            <td>
+    
+                <label for="board">Name of Board:</label>
+                <input type="text" id="board" name="board" value="<%=education[0].nameboard%>">
+    
+            </td>
+            <td>         
+                     <label for="passingyear">Passing year</label>
+                     <input type="text" id="passingyear" name="passingyear" value="<%=education[0].passingyear%>"><br>
+            </td>
+            <td>
+                <label for="percentage">Percentage</label>
+                <input type="text" id="percentage" name="percentage"value="<%=education[0].percentage%>"><br>
+            </td>
+        </tr>
+    
+    </table>
+    
+    </fieldset>
+
+    <fieldset>
+              
+        <legend> Work Experience:</legend>
+    <table id="work" name="work">
+        <tr>
+            <!-- <input type="button" value="+" onclick="work()"> -->
+            <input type="button" value="+" onclick="work()">
+        </tr>
+        <tr>
+            <td>
+               
+            
+                        <label for="companyname">CompanyName :</label>
+                        <input type="text" id="companyname" name="companyname" value="<%-work[0].comp_name%>">
+                        <label for="designaion">Designation:</label>
+                        <input type="text" id="designaion" name="designaion" value="<%-work[0].designaton%>">
+            
+                        <label for="dob1">From:</label>
+                        <input type="date" id="dob1" name="dob1" value="<%-work[0].dfrom%>">
+                        <label for="dob2">To:</label>
+                        <input type="date" id="dob2" name="dob2" value="<%-work[0].dto%>">
+            </td>
+            
+    
+        </tr>
+    </table>
+     
+         
+    </fieldset>
+
+
+    <fieldset>
+        <legend> Language Known:</legend>
+    <table>
+      
+        <tr>
+           
+                <% for(var i=0;i<language.length; i++) { %>
+                           
+                    
+                     <tr>
+                        <% if(language[i].l_name == language[i].l_name ){ %>   
+                        <input type="checkbox" value="<%=language[i].l_name %>" checked id="<%= language[i].l_name %>" name="lang">
+                        <label for="<%= language[i].l_name %>"><%-language[i].l_name %> </label>
+                        <% } else { %> 
+                            <input type="checkbox" value="<%=language[i].l_name %>"id="<%= language[i].l_name %>" name="lang">
+                            <label for="<%= language[i].l_name %>"><%-language[i].l_name %> </label>
+                        <% } %>  
+
+
+                        <% if(language[i].reade == "yes"){ %> 
+                        <input type="checkbox" id="read" value = "<%-language[i].l_name %>" checked name="read">
+                        <label for="read">Read</label>
+                            
+                        <% } else { %> 
+                            <input type="checkbox" id="read" value = "<%-language[i].l_name %>" name="read">
+                            <label for="read">Read</label>
+                        <% } %>
+
+                        <% if(language[i].writ == "yes"){ %> 
+                        <input type="checkbox" id="write" value = "<%-language[i].l_name %>"  checked name="write">
+                        <label for="write">Write</label>
+                        <% } else { %> 
+
+                        <input type="checkbox" id="write" value = "<%-language[i].l_name %>"   name="write">
+                        <label for="write">Write</label>
+                         <% } %>
+  
+                         <% if(language[i].spek == "yes"){ %>  
+                        <input type="checkbox" id="speak"  value = "<%-language[i].l_name %>" checked name="speak">
+                        <label for="speak">Speak</label>
+                        <% } else { %> 
+                            <input type="checkbox" id="speak"  value = "<%-language[i].l_name %>"  name="speak">
+                            <label for="speak">Speak</label>
+                            <% } %>
+
+                     </tr> <br><br>
+                    
+               <%}%>
+               
+            
+           
+        </tr>
+        
+    </table>
+    </fieldset>
+
+    <fieldset>
+        <legend> Technologies Know:</legend>
+        <table>
+            <tr>
+                <% for(var i=0;i<technologies.length; i++) { %>
+                           
+                    
+                    <tr>
+                        
+                      
+                       <input type="checkbox" checked value="<%= technologies[i].name %>"id="<%= technologies[i].name %>" name="technologies">
+                       <label for="<%= technologies[i].name %>"><%= technologies[i].name %> </label>
+
+
+                    <% if (technologies[i].level=="beginner") { %>
+                        <input type="radio" checked id="beginner" name="<%= technologies[i].name %>" value="beginner" >
+                        <label for="beginner">Beginner</label>
+
+                        <input type="radio"  id="mediator" name="<%= technologies[i].name %>" value="mediator" >
+                        <label for="mediator">Mediator</label>
+                        
+                        <input type="radio"  id="expert" name="<%= technologies[i].name %>"value="expert">
+                        <label for="expert">Expert</label>
+
+                    <% } else if(technologies[i].level=="expert"){ %>
+                   
+                        <input type="radio"  id="beginner" name="<%= technologies[i].name %>" value="beginner" >
+                        <label for="beginner">Beginner</label>
+
+                        <input type="radio"  id="mediator" name="<%= technologies[i].name %>" value="mediator" >
+                        <label for="mediator">Mediator</label> 
+
+                        <input type="radio" checked id="expert" name="<%= technologies[i].name %>"value="expert">
+                        <label for="expert">Expert</label>
+        
+                    <% } else if (technologies[i].level=="mediator"){ %>
+
+                        <input type="radio"  id="beginner" name="<%= technologies[i].name %>" value="beginner" >
+                        <label for="beginner">Beginner</label>
+                   
+                        <input type="radio" checked id="mediator" name="<%= technologies[i].name %>" value="mediator" >
+                        <label for="mediator">Mediator</label> 
+
+                        <input type="radio"  id="expert" name="<%= technologies[i].name %>"value="expert">
+                        <label for="expert">Expert</label>
+                   
+                        <% } else { %>
+                              
+
+                        <input type="radio"  id="beginner" name="<%= technologies[i].name %>" value="beginner" >
+                        <label for="beginner">Beginner</label>
+                   
+                        <input type="radio"  id="mediator" name="<%= technologies[i].name %>" value="mediator" >
+                        <label for="mediator">Mediator</label> 
+
+                        <input type="radio"  id="expert" name="<%= technologies[i].name %>"value="expert">
+                        <label for="expert">Expert</label>
+                   
+
+                            <% } %>
+    
+                    </tr><br><br>
+    
+                    <%}%>
+    
+               
+    
+            </tr>
+        </table>
+    
+    </fieldset>
+    <fieldset>
+        <legend> Refrence Contact :</legend>
+        <table id="refrence" name="refrence">
+          <tr>
+              <input type="button" value="+" onclick="addthevalue()">
+        
+          </tr>
+          <tr>
+              <td>
+                <label for="namer">Name :</label>
+                <input type="text" id="namer" name="namer" value="<%=refrence[0].name%>">
+              </td>
+              <td>
+                <label for="contactnumber">Contact Number :</label>
+                <input type="text" id="contactnumber" name="contactnumber" value="<%=refrence[0].contact%>">
+              </td>
+                <td>
+                <label for="relation">Relation :</label>
+                <input type="text" id="relation" name="relation"value="<%=refrence[0].relation%>">
+         
+              </td>
+              
+          </tr>
+        </table>
+        </fieldset>
+    <fieldset>
+        <legend> Prefrence :</legend>
+        
+        <table>
+            <tr>
+                <td>
+                    <label for="preferedlocaton">Prefered Locaton:</label>
+                    <%-preferedlocaton%><br><br>  
+                </td>
+                <td>
+                    <tr>
+                        <label for="noticeperiod">Notice Period:</label>
+                        <input type="text" id="noticeperiod" name="noticeperiod" value="<%=prefrences[0].noticeperiod%>" >
+                    </tr>
+                    
+                
+                <tr>
+                    <label for="currentctc">Current CTC :</label>
+                    <input type="text" id="currentctc" name="currentctc" value="<%=prefrences[0].currentctc%>">
+                </tr>
+                <tr>
+                    <label for="expectedctc">Expected CTC:</label>
+                    <input type="text" id="expectedctc" name="expectedctc" value="<%=prefrences[0].expectedctc%>"><br><br>
+                </tr>
+                </td>
+               
+                    
+                    
+                    <!-- <option value="development">Development</option>
+                    <option value="design">Design</option>
+                    <option value="marketing">Marketing</option> -->
+               
+              
+            
+        
+                
+            </tr>
+            <td>
+             
+                <label for="department">Department:</label>
+                
+               <%-department%>
+            
+            </td>
+           
+        
+        </table>
+        </fieldset>
+   
+    
+
+    <div>
+        <input type ="submit" name="btn" id="btn" onclick="val()" value="Update">
+    </div>
+
+</form>
+
+    <script>
+        
+        
+        var  companyName=0;
+        var  Designation=0;
+        var  dob1=0;
+        var  dob2=0;
+        var  namer=0;
+        var contactnumber=0;
+        var relation=0;
+        var  percentage=0;
+        var  board=0;
+        var  passingyear=0;
+    
+          function addthevalue()
+          {
+             document.getElementById("refrence").innerHTML+=`<tr>
+            <td>
+              <label for="namer">Name :</label>
+              <input type="text" id=${namer++} name="namer">
+            </td>
+            <td>
+              <label for="contactnumber">Contact Number :</label>
+              <input type="text" id=${contactnumber++} name="contactnumber">
+            </td>
+              <td>
+              <label for="relation">Relation :</label>
+              <input type="text" id="relation" name="relation">
+       
+            </td>
+           </tr>`;
+          }
+          function work()
+            {
+                document.getElementById("work").innerHTML+=`<tr>
+            <td>
+               
+            
+                        <label for="companyName">CompanyName :</label>
+                        <input type="text" id=${companyName} name="companyName">
+                        <label for="designaion">Designation:</label>
+                        <input type="text" id=${designaion} name="designaion">
+            
+                        <label for="dob1">From:</label>
+                        <input type="date" id=${dob1} name="dob1">
+                        <label for="dob2">To:</label>
+                        <input type="date" id=${dob2} name="dob2">
+            </td>
+            
+    
+        </tr>`;
+            }
+          function education()
+          {
+              document.getElementById("education").innerHTML+=`<tr>
+              <td>
+               
+           
+                       <label for="ssc"> result:</label><br>
+              </td>
+          </tr>
+          <tr>   
+              <td>
+    
+                  <label for="board">Name of Board:</label>
+                  <input type="text" id=${board++} name="board">
+    
+              </td>
+              <td>         
+                       <label for="passingyear">Passing year</label>
+                       <input type="text" id=${passingyear++} name="passingyear"><br>
+              </td>
+              <td>
+                  <label for="percentage">Percentage</label>
+                  <input type="text" id=${percentage++} name="percentage"><br>
+              </td>
+          </tr>
+      `;
+          }
+      function val()
+      {
+          console.log("submittd !!!")
+      }
+    
+    </script>
+</body>
+</html>

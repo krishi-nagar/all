@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="auth.css">
+</head>
+
+<body>
+    <section class="section">
+        <div class="main ">
+            <div class="container">
+               
+                <div class="row">
+                    <div class="box">
+                        <div class="">
+                            <div class="col_3">
+                                
+                                <div class="login">
+                                    <image src="/authentication-task/logo.svg" alt="logo" />
+                                    
+                                </div>
+
+                                <form class="form" action="/p-auth" onsubmit = "return  validation()" method="post">
+
+                                    <legend>Register :</legend>
+                                    <table>
+                                        <tr>
+                                            <td>
+                                                <label for="name"> Name:</label>
+                                                <input type="text" id="name" name="name">
+                                                <p id="error-name" style="color:red"></p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <label for="email">Email:</label>
+                                                <input type="text" id="email" name="email" onchange="valemail()">
+                                                <p id="error-email" style="color:red"></p>
+                                                <p id="error" style="color:red"></p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <label for="password">Password:</label>
+                                                <input type="text" id="password" name="password" >
+                                                <p id="error-password" style="color:red"></p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <label for="confirmpassword">Confirm Password:</label>
+                                                <input type="text" id="confirmpassword" name="confirmpassword">
+                                                <p id="error-confirmpassword" style="color:red"></p>
+                                                <p id="compare" style="color:red"></p>
+                        
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </fieldset>
+                        
+                                <div >
+                                    <input  class="btn" type="submit" value="submit" >
+                                </div>
+                              
+                        
+                            </form> 
+                            <div class="buttomLink">
+                                dont have an account? <a href="#">click here </a>
+                            </div> 
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="buttomLogo">
+                    <image src="/authentication-task/bottom-logo.png" alt="bottom"/>
+                </div>
+            </div>
+        </div>
+    </section> 
+    <script>
+          function valemail(){
+
+            fetch('/email-val')
+                .then(function(res) {
+
+                   
+                    return res.json()  
+                })
+                .then(function(result){
+                    
+                    var em = document.getElementById("email").value;
+
+                    console.log(result)
+
+                    for(var i = 0; i < result.length; i++) {
+
+                        console.log(result[i].email)
+
+                        if(em == result[i].email){
+
+                            document.getElementById("error").innerHTML=" email already exist";
+
+                           console.log("hey")
+                        }
+                        else {
+                           
+                            document.getElementById("error").innerHTML=" okay!!";
+
+                        }
+                    }
+                })
+;
+        }
+          function validation(){
+
+            {
+
+                console.log("function")
+
+
+              
+                //name 
+
+                var nam =document.getElementById("name").value;
+                console.log(nam)
+                if(nam =='')
+                {
+                    console.log("empty name")
+                     document.getElementById("error-name").innerHTML=" please enter name";
+                   
+                    return false;
+                }
+
+
+
+               //email address
+
+                var em = document.getElementById("email").value;
+                console.log(em)
+                if(em =='')
+                {
+                    console.log("empty email")
+                     document.getElementById("error-email").innerHTML=" please enter email address";
+                   
+                    return false;
+                }
+
+                else if(em !="")
+
+                {
+                    var filter = /^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$/;;
+
+                    if (!filter.test(em)) 
+                    {   
+                        console.log("wrong email")
+
+                        //alert(email)
+                        //alert(filter.test(email.value)) 
+                        document.getElementById("error-email").innerHTML=" please enter  valid email address";
+                       
+                        return false;
+
+                    }
+                }
+
+                // password
+
+                var password = document.getElementById("password").value;
+                console.log(password)
+                if(password =='')
+                {
+                    console.log("empty password")
+                     document.getElementById("error-password").innerHTML=" please enter email address";
+                   
+                    return false;
+                }
+                else{
+                    var newPassword = document.getElementById('password').value;
+
+                    // console.log(newPassword)
+
+                    var minNumberofChars = 6;
+                    var maxNumberofChars = 16;
+                    var regularExpression  = /^[a-zA-Z0-9!@#$%^&*]{6,16}$/;
+                    // alert(newPassword); 
+                    // if(newPassword.length < minNumberofChars || newPassword.length > maxNumberofChars){
+                    //     console.log(newPassword)
+                    //     return false;
+                    // }
+
+                    console.log(!regularExpression.test(newPassword))
+
+                    if(!regularExpression.test(newPassword)) {
+                        alert("password should contain atleast one number and one special character");
+                        console.log(regularExpression)
+                        return false;
+                    }
+                }
+
+                 // confirm password
+                
+                var confirmpassword = document.getElementById("confirmpassword").value;
+                console.log(confirmpassword)
+                if(confirmpassword =='')
+                {
+                    console.log("empty confirm password")
+                     document.getElementById("error-confirmpassword").innerHTML=" please enter  confirm password address";
+                   
+                    return false;
+                }
+                
+
+                //compare password
+
+                if (confirmpassword == password){
+
+                    return true;
+                }
+                
+                else {
+                    document.getElementById("compare").innerHTML="password values are  not match";
+                    console.log("password not match")
+                    return  false;
+                }
+
+
+
+            }
+          }
+    </script> 
+</body>
+</html>

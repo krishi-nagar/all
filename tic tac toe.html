@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      body
+      {
+        background-color: white;
+      }
+      table
+      {
+        position: absolute;
+        top:10;
+        bottom:0;
+        left:0;
+        right:0;
+        margin:auto;
+        color:blue;
+        background-color: black; 
+        
+      }
+      td
+      {
+        height: 100px;
+        width: 150px;
+        text-align: center;
+        font-size: 90px;
+        margin: auto;
+        border-radius: 10%;
+        background-color: bisque;
+      }
+      p
+      {
+        text-align: center;
+        font-size: 50px;
+        
+      }
+    </style>
+</head>
+<body>
+   <table id ="tab" name="tab" border=1>
+       <tr>
+           <td id="0"  name="cell0" onclick="handlevent(this.id)"></td>
+           <td id="1" name="cell1" onclick="handlevent(this.id)"></td>
+           <td id="2" name="cell2"onclick="handlevent(this.id)"></td>
+       </tr>
+       <tr>
+        <td id="3" name="cell3"onclick="handlevent(this.id)"></td>
+        <td id="4" name="cell4"onclick="handlevent(this.id)"></td>
+        <td id="5" name="cell5" onclick="handlevent(this.id)"></td>
+       </tr>
+       <tr>
+        <td id="6" name="cell6"onclick="handlevent(this.id)"></td>
+        <td id="7" name="cell7"onclick="handlevent(this.id)"></td>
+        <td id="8" name="cell8"onclick="handlevent(this.id)"></td>
+       </tr>
+       <p id ='kinjal_n'></p>
+
+       <p >
+         x is =
+         <span id ='kinjal_countx'></span>
+       </p>
+       <p>0 is =<span id = 'kinjal_count0'></span></p>
+        <p>
+        <span id = 'kinjal_draw'></span>
+       </p>
+       
+   </table> 
+</body>
+<script>
+     
+    //to pass the value
+    
+    var ad="0"
+    
+    function handlevent(id)
+    {
+        //here to print the value in cell by id
+      
+      let kinjal_j= document.getElementById(id);
+      
+        // if ther is already value in the cell to disable change of the value
+
+      if(kinjal_j.innerText=="0"||kinjal_j.innerHTML=="X")
+      {
+        return 
+      }
+       
+      if(ad=="0")
+      {
+        kinjal_j.innerText="0";  
+        
+        // check the winning conditions
+        
+        // if has all horizontal win conditions
+
+        if(document.getElementById('0').innerText=="0"&& document.getElementById('1').innerText=="0"&&document.getElementById('2').innerText=="0" 
+          || document.getElementById('3').innerText=="0"&&document.getElementById('4').innerText=="0"&&document.getElementById('5').innerText=="0"
+          ||document.getElementById('6').innerText=="0"&&document.getElementById('7').innerText=="0"&&document.getElementById('8').innerText=="0")
+        
+                  {
+                  document.getElementById('kinjal_n').innerText="winner is 0"
+                  count0++;
+                  document.getElementById('kinjal_count0').innerText=count0;
+                  setTimeout(reset,500);
+                  } 
+        // else if has all vertical win conditions
+        
+        else if(document.getElementById('0').innerText=="0"&&document.getElementById('3').innerText=="0"&&document.getElementById('6').innerText=="0"
+                ||document.getElementById('1').innerText=="0"&&document.getElementById('4').innerText=="0"&&document.getElementById('7').innerText=="0"
+                ||document.getElementById('2').innerText=="0"&&document.getElementById('5').innerText=="0"&&document.getElementById('8').innerText=="0")     
+                
+                {
+                  document.getElementById('kinjal_n').innerText="winner is 0"
+                  count0++;
+                  document.getElementById('kinjal_count0').innerText=count0;
+                  setTimeout (reset,500);
+                }
+        
+        //else if has all diagonal win conditions
+
+        else if(document.getElementById('0').innerText=="0"&&document.getElementById('4').innerText=="0"&&document.getElementById('8').innerText=="0"
+                ||document.getElementById('2').innerText=="0"&&document.getElementById('4').innerText=="0"&&document.getElementById('6').innerText=="0")
+                
+                {
+                  document.getElementById('kinjal_n').innerText="winner is 0"
+                  count0++;
+                  document.getElementById('kinjal_count0').innerText=count0;
+                  setTimeout(reset,500);
+                }
+      
+         //  change the second value
+
+        ad="X";
+
+        // for draw count
+
+        if(draw==9)
+        {
+          alert("draw!!");
+          //document.getElementById('kinjal_draw').innerText="DRAW!!!";
+          setTimeout (reset,500);
+        }
+
+        // draw increament
+
+        draw++;
+
+
+      }
+
+      //same for x value 
+      else
+      {
+      
+        kinjal_j.innerText="X";
+        
+        if(document.getElementById('0').innerText=="X"&&document.getElementById('1').innerText=="X"&&document.getElementById('2').innerText=="X" 
+           || document.getElementById('3').innerText=="X"&&document.getElementById('4').innerText=="X"&&document.getElementById('5').innerText=="X"
+          ||document.getElementById('6').innerText=="X"&&document.getElementById('7').innerText=="X"&&document.getElementById('8').innerText=="X")
+                {
+                  document.getElementById('kinjal_n').innerText="winner is x"
+                  countx++;
+                  document.getElementById('kinjal_countx').innerText=countx;
+                  setTimeout (reset,500);
+                } 
+        else if(document.getElementById('0').innerText=="X"&&document.getElementById('3').innerText=="X"&&document.getElementById('6').innerText=="X"
+                ||document.getElementById('1').innerText=="X"&&document.getElementById('4').innerText=="X"&&document.getElementById('7').innerText=="X"
+                ||document.getElementById('2').innerText=="X"&&document.getElementById('5').innerText=="X"&&document.getElementById('8').innerText=="X")     
+                {
+                  document.getElementById('kinjal_n').innerText="winner is x"
+                  countx++;
+                  document.getElementById('kinjal_countx').innerText=countx;
+                  setTimeout (reset,500);
+                }
+        else if(document.getElementById('0').innerText=="X"&&document.getElementById('4').innerText=="X"&&document.getElementById('8').innerText=="X"
+                ||document.getElementById('2').innerText=="X"&&document.getElementById('4').innerText=="X"&&document.getElementById('6').innerText=="X")
+                
+                {
+                  document.getElementById('kinjal_n').innerText="winner is x"
+                  countx++;
+                  document.getElementById('kinjal_countx').innerText=countx;
+                  
+                  setTimeout (reset,500);
+                }
+        ad="0";
+        draw++;
+        
+
+        if(draw==9)
+        {
+          alert("draw!!");
+          setTimeout (reset,500);
+        }
+
+      }
+
+    }
+
+    // function for reset after winning
+
+      function reset()
+    {
+      draw=0;
+      //console.log("reset");
+     
+      var kinjal_d =document.getElementsByTagName("td");
+
+      // to empty all the cell values
+
+      for(i=0;i<9;i++)
+      {
+        kinjal_d[i].innerHTML="";
+      }
+        
+    }
+
+    // global declaration of count AND draw variable
+
+    var countx=0;
+    var count0=0;
+    var draw=0;
+
+</script>
+</html>
+<!-- 
+//  count++;
+
+// other array method to check the winnig conditions
+
+//function checkevent(name)
+
+/* for(var i=0;i<=v;i++)
+         {
+          kj+="<tr>"
+          for(var j=0;j<=v;j++)
+          {
+            //var k = `'${i},${j}'`
+            //kj+="<td onmouseover="+"show("+`${k}`+")"+"> hello </td>";
+            if ()
+            {
+
+            }
+            
+          }
+           kj+="</tr>"
+         }
+         table.innerHTML=kj;
+         
+         console.log(kj);
+
+*/
+         /* var nk_win=[
+[0, 1, 2],[3, 4, 5],
+[6, 7, 8],[0, 3, 6],
+[1, 4, 7],[2, 5, 8],
+[0, 4, 8],[2, 4, 6]
+];
+if(nk_win. indexOf([0]) !== -1)
+   alert("win");*/
+
+
+/* for()
+{
+
+}*/
+/*
+if(nk_win==("[0],[7]"))
+{
+  alert("you win!!!");
+}
+else
+{
+    alert("lose!!")
+}*/ -->

@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+        <div>
+            <input type="text" placeholder="Search.." id="input" onchange="query(this.value)">
+        
+             <div id ="button"><a id="btn" href="" >search</a></div>
+        </div><br>
+<body>
+    <script>
+        function query(str){
+           
+          var p=document.getElementById('input').value;
+           p=p.replace ('^','&firt=');
+           p=p.replace ('#','&lat=');
+           p=p.replace ('%','&designation=');
+           p=p.replace ('-','&city=');
+           p=p.replace ('~','&gender=');
+           
+           document.getElementById('btn').setAttribute("href",`/page?${p}`)
+           console.log(p)
+        }
+        
+    </script>
+    
+
+   <span onclick="delall()" class="del">delete</span>
+    <table>
+        
+        <tr style="color:black;font-size: 150%;text-align: center;">
+            
+            <td>first</td>
+            <td>last</td>
+            <td>designation</td>
+            <td>city</td>
+            <td>gender</td>
+        </tr>
+        <tr>
+            <td>^</td>
+            <td>#</td>
+            <td>%</td>
+            <td>-</td>
+            <td>~</td>
+        </tr>
+    </table>
+    
+ 
+    <table id = "tab" border="1">
+        <tr style="color:black;font-size: 150%;text-align: center;">
+           <td> multi-delete</td>
+           <td> <a href = "/page?no=1"> id </a></td>
+           <td> <a href = "/page?no=1"> first</a></td>
+           <td> <a href = "/page?no=1"> last</a></td>
+           <td> <a href = "/page?no=1"> designation</a></td>
+           <td> <a href = "/page?no=1"> address1</a></td>
+           <td> <a href = "/page?no=1"> address2</a></td>
+           <td> <a href = "/page?no=1"> phone</a></td>
+           <td> <a href = "/page?no=1"> city</a></td>
+           <td> <a href = "/page?no=1"> state</a></td>
+           <td> <a href = "/page?no=1"> zipcode</a></td>
+           <td> <a href = "/page?no=1"> gender</a></td>
+           <td> <a href = "/page?no=1"> relation</a></td>
+           <td> <a href = "/page?no=1"> dob</a></td>
+            <td><a href = "/page?no=1"> deletebox</a></td>
+            <td><a  href="/view?e_id=1">view</a></td>
+            <td><a  href="/edit?id=1" >edit</a></td>
+           
+        </tr>
+        
+         <% var j=0;%>
+            <% for(var i=0;i<data.length; i++) { %>
+                <tr id="tr<%=data[i].id %>">
+                    <td><input type="checkbox" id="<%=data[i].id %>"onclick="alldel(`<%=data[i].id %>`)"></td>
+                    <td><%=data[i].id %></td>
+                    <td><%=data[i].firt %></td>
+                    <td><%=data[i].lat %></td>
+                    <td><%=data[i].designation %></td>
+                    <td><%=data[i].address1 %></td>
+                    <td><%=data[i].address2%></td>
+                    <td><%=data[i].phone %></td>
+                    <td><%=data[i].city %></td>
+                    <td><%=data[i].state %></td>
+                    <td><%=data[i].zipcode %></td>
+                    <td><%=data[i].gender %></td>
+                    <td><%=data[i].relation %></td>
+                    <td><%=data[i].dob %></td>
+                    
+                    <td><div class="del1" id="<%=data[i].id %>" onclick="delrow(`<%=data[i].id %>`)"><i class="glyphicon glyphicon-remove"></i></div></td>
+                    <td><a  href="/view?e_id=<%=data[i].id %>" >view</a></td>
+                    <td><a  href="/edit?id=<%=data[i].id %>" >edit</a></td>
+                </tr>
+  
+           <% } (j++) %>
+            
+        
+       
+    </table>
+
+
+   
+    
+    <% for(var i=1;i<=jk;i++){%>
+
+        <% if (i==(no)){ %>
+            <div  onclick="pagination(`/page?no=<%=i%>&Ajax=true`)" class='pqr'><%=i%></div>
+    
+        <%} else {%>
+            
+            <div onclick="pagination(`/page?no=<%=i%>&Ajax=true`)" class='pqr1'><%=i%></a></div>
+        <%}%>
+        
+        <%}%>
+    
+       
+    <style>
+       .pqr{
+            background-color: #A7727D;
+            color: black;
+            
+            padding: 7px 7px;
+            text-decoration: none;  
+                    
+            display: inline-block;       
+       }
+       .pqr1{
+           
+           background-color: #EDDBC7;
+            color: white;
+            border-radius: 5px;
+            display: inline-block;
+       }
+        
+
+        td {
+              margin: 0 10%;
+              padding: 2px;
+              border: 1px solid   #FFD39A;
+              background-color: #EEEEEE;
+              text-align: center;
+
+            }
+        .del{
+
+            border: 1px solid  #d18888  ;
+
+        }
+       .del1{
+           font-size: medium;
+       } 
+       
+       .loader{
+           
+        border: 16px solid #f3f3f3; /* Light grey */
+        border-top: 16px solid #3498db; /* Blue */
+        border-radius: 50%;
+        width: 120px;
+        height: 120px;
+        animation: spin 2s linear infinite;
+        }
+
+        @keyframes spin {
+        10% { transform: rotate(10deg); }
+        100% { transform: rotate(360deg); }
+
+       }
+        
+        </style>
+        <script>
+
+            // generatetab("1");
+            // async function generatetab(no){
+            //     var ans = await fetch (`http://localhost:9000/page?no=${no}`)
+            //    var getdata = await ans.json()
+            //    console.log(ans)
+            //    var data = getdata[0].data;
+            //    console.log(data);
+            // }
+             function delrow(id)
+                { 
+                    console.log(id)
+                    console.log
+                   
+                                if (confirm("Are you sure ?") == true) {
+
+                                document.getElementById(`tr${id}`).style.display ="none"
+
+                                    fetch(`\del?id=${id}` )
+                                
+                                .then(res =>res.json())
+                            
+                                // location.reload()
+                                
+                                .then((data) => 
+                                {
+                                    console.log("changed!!!")
+                                    
+                                    //document.getElementById("hidethis").style.display = 'none'
+                                })
+                
+                            }
+
+                            else{
+                                alert(" You canceled !!") 
+                                console.log( "You canceled!");
+                            }
+                    
+                }
+           
+           
+             var idarr = [];
+             
+            function delall()
+            {
+                console.log("hello");
+                if (confirm("Are you sure ?") == true) {
+                for(i=0;i<idarr.length;i++)
+                {
+                    idarr.forEach(id=>{ 
+                        console.log(id)
+                        document.getElementById(`tr${id}`).style.display="none";
+                    })
+                
+                    fetch(`\del?id=${idarr[i]}` )
+                    //.then(console.log('fetch'))
+                    .then(res =>res.json())
+                    
+                    .then((data) => 
+                    {
+                        console.log(" all changed!!!")
+                    
+                      
+                    })
+                }
+               
+                }
+            }
+
+
+            function alldel(id)
+            {
+               
+                idarr.push(id)
+                console.log(idarr)
+                
+                
+            }
+
+            //str = `/page?no=<%=i%>&Ajax=true`
+
+            function pagination(str) 
+            {
+                var table = document.getElementById('tab')
+                table.innerHTML = `<div class="loader"></div>`
+                var s = ""
+                console.log(str)
+                setTimeout(()=>{
+                    fetch(str)
+                    .then(res=>res.json())
+                    .then((data)=>{
+                        console.log(data)
+                        s+=` <tr style="color:black;font-size: 150%;text-align: center;">
+           <td> multi-delete</td>
+           <td> <a href = "/page?no=1"></a> id </td>
+           <td> <a href = "/page?no=1"></a> first</td>
+           <td> <a href = "/page?no=1"></a> last</td>
+           <td> <a href = "/page?no=1"></a> designation</td>
+           <td> <a href = "/page?no=1"></a> address1</td>
+           <td> <a href = "/page?no=1"></a> address2</td>
+           <td> <a href = "/page?no=1"></a> phone</td>
+           <td> <a href = "/page?no=1"></a> city</td>
+           <td> <a href = "/page?no=1"></a> state</td>
+           <td> <a href = "/page?no=1"></a> zipcode</td>
+           <td> <a href = "/page?no=1"></a> gender</td>
+           <td> <a href = "/page?no=1"></a> relation</td>
+           <td> <a href = "/page?no=1"></a> dob</td>
+            <td><a href = "/page?no=1"></a> deletebox</td>
+            <td><a href = "/view?e_id=1" >view</a></td>
+            <td><a href = "/edit?id=1" >edit</a></td>
+            
+           
+        </tr>`
+
+        for(var x=0;x<data.length;x++){
+        //for(x of data){
+            s+=` <tr id="tr${data[x].id}">
+                    <td><input type="checkbox" id="${data[x].id}"onclick="alldel(${data[x].id})"></td>
+                    <td>${data[x].id}</td>
+                    <td>${data[x].firt}</td>
+                    <td>${data[x].lat}</td>
+                    <td>${data[x].designation}</td>
+                    <td>${data[x].address1}</td>
+                    <td>${data[x].address2}</td>
+                    <td>${data[x].phone}</td>
+                    <td>${data[x].city}</td>
+                    <td>${data[x].state}</td>
+                    <td>${data[x].zipcode}</td>
+                    <td>${data[x].gender}</td>
+                    <td>${data[x].relation}</td>
+                    <td>${data[x].dob}</td>
+                    <td><div class="del1" id="${data[x].id}" onclick="delrow(${data[x].id})"><i class="glyphicon glyphicon-remove"></i></div></td>
+                    <td><a  href="/view?e_id=${data[x].id}" >view</a></td>
+                    <td><a  href="/edit?id=${data[x].id}" >edit</a></td>
+                    </tr>`
+                       }
+                       table.innerHTML = s;
+                    })
+                },2000)
+            } 
+
+           
+
+        </script>
+</body> 
+
+</html>                                                                                                          

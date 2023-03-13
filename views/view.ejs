@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <table id = "tab" border="1">
+        <tr style="color:black;font-size: 150%;text-align: center;">
+          
+           <td>  e_id </td>
+           <td>  nameboard</td>
+           <td>  passinngyear</td>
+           <td>  percentage</td>
+           <td>  t_id</td>
+          
+           
+        </tr>
+        
+         <% var j=0;%>
+            <% for(var i=0;i<data1.length; i++) { %>
+                <tr id="tr<%=data1[i].e_id %>">
+                   
+                    <td><%=data1[i].e_id %></td>
+                    <td><%=data1[i].nameboard %></td>
+                    <td><%=data1[i].passinngyear %></td>
+                    <td><%=data1[i].percentage %></td>
+                    <td><%=data1[i].t_id %></td>
+                    
+                </tr>
+  
+           <% } (j++) %>
+            
+        
+       
+    </table>
+
+</body>
+</html>
